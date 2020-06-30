@@ -3,7 +3,7 @@ Python functions for generating phase-randomised images of text. Fourier transfo
 
 ## Summary
 
-The `draw.text()` function makes it easy to create an image of text.
+The `draw.text()` function can be used to create an image of text.
 
 ```python
 import draw
@@ -21,11 +21,20 @@ rp = phase.randomise(text_img, noise='normal')
 rp.show()
 ```
 
+## Example Outputs
+
 ![](img/small_img1_ph.png)
 
 ## Notes
 
-* `draw.text()` also accepts different fonts and colours
-* `phase.randomise()` accepts any PIL image, and can work with colour or greyscale images
+* `draw.text()` also accepts different fonts, colours, background colours, and font sizes.
+* `draw.text()` has a `border` argument which can be used to specify a border around the crop.
+* `draw.text()` has a `crop_to` argument, so the generated image is either cropped to the extremities of the text (`crop_to='text'`), or the extremities of the font (`crop_to='font'`).
+* `phase.randomise()` accepts any PIL image, and can work with colour or greyscale images.
 
 ![](img/examples.png)
+
+## Dependencies
+
+* `PIL`
+* `numpy`
