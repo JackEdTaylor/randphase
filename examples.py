@@ -41,4 +41,4 @@ for plt_y in range(len(imgs)):
 
 plt.subplots_adjust(left=0.275, top = 0.99, bottom = 0, right = 0.99, wspace=0.1, hspace=0.25)
 
-fig.savefig(fname=op.join('img', 'examples.png'), dpi=300)
+fig.savefig(fname=op.join('img', 'examples.png'), dpi=100)
