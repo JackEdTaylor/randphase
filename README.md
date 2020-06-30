@@ -21,9 +21,11 @@ rp = phase.randomise(text_img, noise='normal')
 rp.show()
 ```
 
+![](img/small_img1_ph.png)
+
 ## Example Outputs
 
-![](img/small_img1_ph.png)
+![](img/examples.png)
 
 ## Notes
 
@@ -31,8 +33,6 @@ rp.show()
 * `draw.text()` has a `border` argument which can be used to specify a border around the crop.
 * `draw.text()` has a `crop_to` argument, so the generated image is either cropped to the extremities of the text (`crop_to='text'`), or the extremities of the font (`crop_to='font'`).
 * `phase.randomise()` accepts any PIL image, and can work with colour or greyscale images.
-
-![](img/examples.png)
 
 ## Dependencies
 
