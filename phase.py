@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-def randomise (img, noise='normal', loc=0, scale=1):
+def randomise (img, noise='normal'):
     """Randomise the phase of an image.
     
      Keyword arguments:
