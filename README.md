@@ -17,7 +17,7 @@ To randomise the phase of an image with normally distributed noise, use `phase.r
 
 ```python
 import phase
-rp = phase.randomise(text_img, noise='normal')
+rp = phase.randomise(raw, noise='normal')
 rp.show()
 ```
 
