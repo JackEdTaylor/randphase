@@ -7,15 +7,37 @@ import draw
 import phase
 
 # save smaller images
-small_img1 = draw.text('erudition', size=50)
-small_img1.save(op.join('img', 'small_img1.png'))
-small_img1_ph = phase.randomise(small_img1, noise='normal')
-small_img1_ph.save(op.join('img', 'small_img1_ph.png'))
+text_im = draw.text('erudition', size=50)
+text_im.save(op.join('img', 'text_im.png'))
+rp_im = phase.randomise(text_im, noise='normal')
+rp_im.save(op.join('img', 'rp_im.png'))
+
+# compare cropping
+crop1 = draw.text('brine', size=50, crop_x = 'font', crop_y='font')
+crop1.save(op.join('img', 'crop1.png'))
+crop2 = draw.text('bring', size=50, crop_x = 'font', crop_y='font')
+crop2.save(op.join('img', 'crop2.png'))
+crop3 = draw.text('WWWWW', size=50, crop_x = 'font', crop_y='font')
+crop3.save(op.join('img', 'crop3.png'))
+
+# compare alignment
+align_a = draw.text('brine', size=50, crop_x='font', align_x='centre')
+align_b = draw.text('brine', size=50, crop_x='font', align_x='left')
+align_c = draw.text('brine', size=50, crop_x='font', align_x='right')
+
+# show other text options
+text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0),
+                      bg=(100,0,100), size=125, crop_x='font', align_x='centre')
+text_spec.save(op.join('img', 'text_spec.png'))
+
+# luke examples
+luke = Image.open(op.join('img', 'luke.png'))
+luke_rp = phase.randomise(luke)
+luke_rp.save(op.join('img', 'luke_rp.png'))
 
 # plot large figure
 text_img1 = draw.text('Arial', size=100)
 text_img2 = draw.text('Arial', bg=(0,0,0), colour=(255,255,255), size=100)
-luke = Image.open(op.join('img', 'luke.png'))
 luke_grey = luke.convert('LA')
 
 imgs = [text_img1, text_img2, luke, luke_grey]
