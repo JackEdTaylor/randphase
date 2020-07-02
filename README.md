@@ -16,18 +16,12 @@ text_im.show()
 This can be cropped to the extremities of the target text (as above), or to the maximum size available to the given number of ascii characters for the target font (for x and y separately).
 
 ```python
-<<<<<<< HEAD
 crop1 = draw.text('brine', size=50, crop_x = 'font', crop_y='font')
 crop2 = draw.text('bring', size=50, crop_x = 'font', crop_y='font')
 crop3 = draw.text('WWWWW', size=50, crop_x = 'font', crop_y='font')
 crop1.show()
 crop2.show()
 crop3.show()
-=======
-import phase
-rp = phase.randomise(raw, noise='normal')
-rp.show()
->>>>>>> ef3d113e40dc71897e47ef066ae2d2ec10c2de75
 ```
 
 ![](img/crop1.png)
