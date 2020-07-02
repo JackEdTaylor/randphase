@@ -35,6 +35,18 @@ rp_im_unif.save(op.join('img', 'rp_im_unif.png'))
 rp_im_perm = phase.randomise(im_perm, noise='permute')
 rp_im_perm.save(op.join('img', 'rp_im_perm.png'))
 
+# show noise_prop effect
+u_010 = phase.randomise(text_im, noise_prop=0.1)
+u_025 = phase.randomise(text_im, noise_prop=0.25)
+u_050 = phase.randomise(text_im, noise_prop=0.50)
+u_075 = phase.randomise(text_im, noise_prop=0.75)
+u_100 = phase.randomise(text_im, noise_prop=1)
+u_010.save(op.join('img', 'u_010.png'))
+u_025.save(op.join('img', 'u_025.png'))
+u_050.save(op.join('img', 'u_050.png'))
+u_075.save(op.join('img', 'u_075.png'))
+u_100.save(op.join('img', 'u_100.png'))
+
 # show other text options
 text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0), bg=(100,0,100),
                       border=(0,0,10,10), size=75, crop_x='font', align_x='centre')
