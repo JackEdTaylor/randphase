@@ -31,7 +31,7 @@ text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0), bg=(100,
 text_spec.save(op.join('img', 'text_spec.png'))
 
 # luke examples
-luke = Image.open(op.join('img', 'luke.png'))
+luke = Image.open(op.join('img', 'luke.png')).convert('RGB')
 luke_rp = phase.randomise(luke)
 luke_rp.save(op.join('img', 'luke_rp.png'))
 
