@@ -26,8 +26,8 @@ align_b = draw.text('brine', size=50, crop_x='font', align_x='left')
 align_c = draw.text('brine', size=50, crop_x='font', align_x='right')
 
 # show other text options
-text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0),
-                      bg=(100,0,100), size=125, crop_x='font', align_x='centre')
+text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0), bg=(100,0,100),
+                      border=(0,0,10,10), size=75, crop_x='font', align_x='centre')
 text_spec.save(op.join('img', 'text_spec.png'))
 
 # luke examples
