@@ -9,8 +9,10 @@ import phase
 # save smaller images
 text_im = draw.text('erudition', size=50)
 text_im.save(op.join('img', 'text_im.png'))
-rp_im = phase.randomise(text_im, noise='normal')
+rp_im = phase.randomise(text_im, noise='uniform')
 rp_im.save(op.join('img', 'rp_im.png'))
+pp_im = phase.randomise(text_im, noise='uniform')
+pp_im.save(op.join('img', 'pp_im.png'))
 
 # compare cropping
 crop1 = draw.text('brine', size=50, crop_x = 'font', crop_y='font')
@@ -25,6 +27,14 @@ align_a = draw.text('brine', size=50, crop_x='font', align_x='centre')
 align_b = draw.text('brine', size=50, crop_x='font', align_x='left')
 align_c = draw.text('brine', size=50, crop_x='font', align_x='right')
 
+# compare noise methods
+im_perm = draw.text('stupendous', size=50, colour=(255,0,0), bg=(0,0,0))
+im_perm.save(op.join('img', 'im_perm.png'))
+rp_im_unif = phase.randomise(im_perm, noise='uniform')
+rp_im_unif.save(op.join('img', 'rp_im_unif.png'))
+rp_im_perm = phase.randomise(im_perm, noise='permute')
+rp_im_perm.save(op.join('img', 'rp_im_perm.png'))
+
 # show other text options
 text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0), bg=(100,0,100),
                       border=(0,0,10,10), size=75, crop_x='font', align_x='centre')
@@ -37,19 +47,27 @@ luke_rp.save(op.join('img', 'luke_rp.png'))
 
 # plot large figure
 text_img1 = draw.text('Arial', size=100)
-text_img2 = draw.text('Arial', bg=(0,0,0), colour=(255,255,255), size=100)
+text_img2 = draw.text('Arial', bg=(0,0,0), colour=(127,127,0), size=100)
 luke_grey = luke.convert('LA')
 
 imgs = [text_img1, text_img2, luke, luke_grey]
 plt_labs = ['Raw Image',
-            'Phase-Randomised\nwith Uniform Noise',
-            'Phase-Randomised\nwith Gaussian Noise']
-fig, axs = plt.subplots(len(plt_labs), len(imgs), figsize=(20, 5))
+            '25%  Phase-Randomised\nwith Uniform Noise',
+            '50% Phase-Randomised\nwith Uniform Noise',
+            '100% Phase-Randomised\nwith Uniform Noise',
+            '25% Phase-Permuted',
+            '50% Phase-Permuted',
+            '100% Phase-Permuted']
+fig, axs = plt.subplots(len(plt_labs), len(imgs), figsize=(20, 18))
 
 for im_nr, im in enumerate(imgs):
     axs[0, im_nr].imshow(im)
-    axs[1, im_nr].imshow(phase.randomise(im, noise='uniform'))
-    axs[2, im_nr].imshow(phase.randomise(im, noise='normal'))
+    axs[1, im_nr].imshow(phase.randomise(im, noise='uniform', noise_prop=0.25))
+    axs[2, im_nr].imshow(phase.randomise(im, noise='uniform', noise_prop=0.5))
+    axs[3, im_nr].imshow(phase.randomise(im, noise='uniform', noise_prop=1))
+    axs[4, im_nr].imshow(phase.randomise(im, noise='permute', noise_prop=0.25))
+    axs[5, im_nr].imshow(phase.randomise(im, noise='permute', noise_prop=0.5))
+    axs[6, im_nr].imshow(phase.randomise(im, noise='permute', noise_prop=1))
 
 for lab_nr, lab in enumerate(plt_labs):
     axs[lab_nr, 0].set_ylabel(lab, rotation=0, fontsize=25, labelpad=200, verticalalignment='center')
