@@ -1,5 +1,5 @@
 # randphase
-Python functions for generating phase-randomised images of text. Fourier transform is used to extract amplitude. Inverse Fourier transform is used to generate an image with the same amplitude spectrum but with phase generated from normally or uniformly distributed noise.
+Python functions for generating phase-randomised images of text. Fourier transform is used to extract amplitude. Inverse Fourier transform is used to generate an image with the same amplitude spectrum but with phase generated from uniformly distributed noise or a permutation of the original image's phase (preserving the overall distribution of phase values).
 
 ## Drawing Text
 
