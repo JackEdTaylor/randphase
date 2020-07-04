@@ -7,17 +7,17 @@ import draw
 import phase
 
 # simple examples
-text_im = draw.text('erudition', size=50)
-text_im.save(op.join('img', 'text_im.png'))
-rp_im = phase.randomise(text_im, noise='uniform')
+im = draw.text('stupendous', size=50, font='cour.ttf', crop_y='font')
+im.save(op.join('img', 'im.png'))
+rp_im = phase.randomise(im, noise='uniform')
 rp_im.save(op.join('img', 'rp_im.png'))
-pp_im = phase.randomise(text_im, noise='uniform')
+pp_im = phase.randomise(im, noise='uniform')
 pp_im.save(op.join('img', 'pp_im.png'))
 
 # simple examples with contrast adjustment
-rp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
+rp_im_adj = phase.randomise(im, noise='uniform', contrast_adj=0.5)
 rp_im_adj.save(op.join('img', 'rp_im_adj.png'))
-pp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
+pp_im_adj = phase.randomise(im, noise='uniform', contrast_adj=0.5)
 pp_im_adj.save(op.join('img', 'pp_im_adj.png'))
 
 # compare cropping
@@ -33,26 +33,17 @@ align_a = draw.text('brine', size=50, crop_x='font', align_x='centre')
 align_b = draw.text('brine', size=50, crop_x='font', align_x='left')
 align_c = draw.text('brine', size=50, crop_x='font', align_x='right')
 
-# compare noise methods
-im_perm = draw.text('stupendous', size=100, font='cour.ttf')
-im_perm.save(op.join('img', 'im_perm.png'))
-rp_im_unif = phase.randomise(im_perm, noise='uniform')
-rp_im_unif.save(op.join('img', 'rp_im_unif.png'))
-rp_im_perm = phase.randomise(im_perm, noise='permute')
-rp_im_perm.save(op.join('img', 'rp_im_perm.png'))
-
 # show noise_prop effect
-u_010 = phase.randomise(text_im, noise_prop=0.1)
-u_025 = phase.randomise(text_im, noise_prop=0.25)
-u_050 = phase.randomise(text_im, noise_prop=0.50)
-u_075 = phase.randomise(text_im, noise_prop=0.75)
-u_100 = phase.randomise(text_im, noise_prop=1)
+u_010 = phase.randomise(im, noise_prop=0.1, contrast_adj=0.5)
+u_025 = phase.randomise(im, noise_prop=0.25, contrast_adj=0.5)
+u_050 = phase.randomise(im, noise_prop=0.50, contrast_adj=0.5)
+u_075 = phase.randomise(im, noise_prop=0.75, contrast_adj=0.5)
+u_100 = phase.randomise(im, noise_prop=1, contrast_adj=0.5)
 u_010.save(op.join('img', 'u_010.png'))
 u_025.save(op.join('img', 'u_025.png'))
 u_050.save(op.join('img', 'u_050.png'))
 u_075.save(op.join('img', 'u_075.png'))
 u_100.save(op.join('img', 'u_100.png'))
-
 
 # show other text options
 text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0), bg=(100,0,100),
