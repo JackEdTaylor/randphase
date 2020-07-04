@@ -56,7 +56,7 @@ pp_im.show()
 ![](img/rp_im.png)
 ![](img/pp_im.png)
 
-For text, this will often lead to contrast artefacts, seen as black spots in the images above. This can be remedied with the `contrast_adj` argument, which proportionally alters the image's contrast before running the Fourier transform, and then reverts the result to the original image's contrast.
+For text, this will occasionally lead to contrast artefacts, seen as black spots in the images above. This can be remedied with the `contrast_adj` argument, which proportionally alters the image's contrast before running the Fourier transform, and then reverts the result to the original image's contrast.
 
 ```python
 rp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
@@ -73,11 +73,11 @@ pp_im_adj.show()
 You can also control the proportion of the phase information which is noise.
 
 ```python
-u_010 = phase.randomise(im, noise_prop=0.1)
-u_025 = phase.randomise(im, noise_prop=0.25)
-u_050 = phase.randomise(im, noise_prop=0.50)
-u_075 = phase.randomise(im, noise_prop=0.75)
-u_100 = phase.randomise(im, noise_prop=0.100)
+u_010 = phase.randomise(im, noise_prop=0.1, contrast_adj=0.5)
+u_025 = phase.randomise(im, noise_prop=0.25, contrast_adj=0.5)
+u_050 = phase.randomise(im, noise_prop=0.50, contrast_adj=0.5)
+u_075 = phase.randomise(im, noise_prop=0.75, contrast_adj=0.5)
+u_100 = phase.randomise(im, noise_prop=0.100, contrast_adj=0.5)
 im.show()
 u_010.show()
 u_025.show()
