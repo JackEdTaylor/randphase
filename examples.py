@@ -11,13 +11,13 @@ im = draw.text('erudition', size=50, font='courbd.ttf')
 im.save(op.join('img', 'im.png'))
 rp_im = phase.randomise(im, noise='uniform')
 rp_im.save(op.join('img', 'rp_im.png'))
-pp_im = phase.randomise(im, noise='uniform')
+pp_im = phase.randomise(im, noise='permute')
 pp_im.save(op.join('img', 'pp_im.png'))
 
 # simple examples with contrast adjustment
 rp_im_adj = phase.randomise(im, noise='uniform', contrast_adj=0.5)
 rp_im_adj.save(op.join('img', 'rp_im_adj.png'))
-pp_im_adj = phase.randomise(im, noise='uniform', contrast_adj=0.5)
+pp_im_adj = phase.randomise(im, noise='permute', contrast_adj=0.5)
 pp_im_adj.save(op.join('img', 'pp_im_adj.png'))
 
 # compare cropping
