@@ -6,13 +6,19 @@ import os.path as op
 import draw
 import phase
 
-# save smaller images
+# simple examples
 text_im = draw.text('erudition', size=50)
 text_im.save(op.join('img', 'text_im.png'))
 rp_im = phase.randomise(text_im, noise='uniform')
 rp_im.save(op.join('img', 'rp_im.png'))
 pp_im = phase.randomise(text_im, noise='uniform')
 pp_im.save(op.join('img', 'pp_im.png'))
+
+# simple examples with contrast adjustment
+rp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
+rp_im_adj.save(op.join('img', 'rp_im_adj.png'))
+pp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
+pp_im_adj.save(op.join('img', 'pp_im_adj.png'))
 
 # compare cropping
 crop1 = draw.text('brine', size=50, crop_x = 'font', crop_y='font')
@@ -28,7 +34,7 @@ align_b = draw.text('brine', size=50, crop_x='font', align_x='left')
 align_c = draw.text('brine', size=50, crop_x='font', align_x='right')
 
 # compare noise methods
-im_perm = draw.text('stupendous', size=50, colour=(255,0,0), bg=(0,0,0))
+im_perm = draw.text('stupendous', size=100, font='cour.ttf')
 im_perm.save(op.join('img', 'im_perm.png'))
 rp_im_unif = phase.randomise(im_perm, noise='uniform')
 rp_im_unif.save(op.join('img', 'rp_im_unif.png'))
@@ -46,6 +52,7 @@ u_025.save(op.join('img', 'u_025.png'))
 u_050.save(op.join('img', 'u_050.png'))
 u_075.save(op.join('img', 'u_075.png'))
 u_100.save(op.join('img', 'u_100.png'))
+
 
 # show other text options
 text_spec = draw.text('fancy', font='BRUSHSCI.TTF', colour=(255,127,0), bg=(100,0,100),
