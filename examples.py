@@ -6,6 +6,9 @@ import os.path as op
 import draw
 import phase
 
+text_im = draw.text('example', size=50)
+text_im.save(op.join('img', 'text_im.png'))
+
 # simple examples
 im = draw.text('erudition', size=50, font='courbd.ttf')
 im.save(op.join('img', 'im.png'))
