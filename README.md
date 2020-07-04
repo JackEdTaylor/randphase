@@ -73,11 +73,11 @@ pp_im_adj.show()
 You can also control the proportion of the phase information which is noise.
 
 ```python
-u_010 = phase.randomise(im, noise_prop=0.1, contrast_adj=0.5)
-u_025 = phase.randomise(im, noise_prop=0.25, contrast_adj=0.5)
-u_050 = phase.randomise(im, noise_prop=0.50, contrast_adj=0.5)
-u_075 = phase.randomise(im, noise_prop=0.75, contrast_adj=0.5)
-u_100 = phase.randomise(im, noise_prop=0.100, contrast_adj=0.5)
+u_010 = phase.randomise(im, noise='permute', noise_prop=0.1, contrast_adj=0.5)
+u_025 = phase.randomise(im, noise='permute', noise_prop=0.25, contrast_adj=0.5)
+u_050 = phase.randomise(im, noise='permute', noise_prop=0.50, contrast_adj=0.5)
+u_075 = phase.randomise(im, noise='permute', noise_prop=0.75, contrast_adj=0.5)
+u_100 = phase.randomise(im, noise='permute', noise_prop=0.100, contrast_adj=0.5)
 im.show()
 u_010.show()
 u_025.show()
