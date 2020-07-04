@@ -86,7 +86,7 @@ u_075.show()
 u_0100.show()
 ```
 
-![](img/text_im.png)
+![](img/im.png)
 ![](img/u_010.png)
 ![](img/u_025.png)
 ![](img/u_050.png)
