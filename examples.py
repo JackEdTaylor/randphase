@@ -7,7 +7,7 @@ import draw
 import phase
 
 # simple examples
-im = draw.text('stupendous', size=50, font='cour.ttf', crop_y='font')
+im = draw.text('erudition', size=50, font='courbd.ttf')
 im.save(op.join('img', 'im.png'))
 rp_im = phase.randomise(im, noise='uniform')
 rp_im.save(op.join('img', 'rp_im.png'))
