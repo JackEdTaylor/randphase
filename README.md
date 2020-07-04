@@ -40,7 +40,7 @@ text_spec.show()
 
 ## Randomising Phase
 
-To randomise the phase of an image with normally distributed noise, use `phase.randomise()`. This can be drawn from a uniform distribution (between <img src="https://render.githubusercontent.com/render/math?math=-\pi"> and <img src="https://render.githubusercontent.com/render/math?math=\pi">), or from a random permutation of the original phase values.
+To randomise the phase of an image with normally distributed noise, use `phase.randomise()`. This can be drawn from a uniform distribution (between <img src="https://render.githubusercontent.com/render/math?math=-\pi"> and <img src="https://render.githubusercontent.com/render/math?math=\pi">), or from a random permutation of the original phase values. Permuting the phase values can produce some very nice text-like noise patterns!
 
 ```python
 import phase
@@ -60,7 +60,7 @@ For text, this will occasionally lead to contrast artefacts, seen as black spots
 
 ```python
 rp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
-pp_im_adj = phase.randomise(text_im, noise='uniform', contrast_adj=0.5)
+pp_im_adj = phase.randomise(text_im, noise='permute', contrast_adj=0.5)
 im.show()
 rp_im_adj.show()
 pp_im_adj.show()
