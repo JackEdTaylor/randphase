@@ -44,7 +44,7 @@ To randomise the phase of an image with normally distributed noise, use `phase.r
 
 ```python
 import phase
-im = draw.text('stupendous', size=50, font='cour.ttf', crop_y='font')
+im = draw.text('erudition', size=50, font='courbd.ttf')
 rp_im = phase.randomise(im, noise='uniform')
 pp_im = phase.randomise(im, noise='permute')
 im.show()
