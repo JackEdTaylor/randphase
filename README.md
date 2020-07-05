@@ -8,7 +8,7 @@ The `draw.text()` function can be used to create an image of text.
 ```python
 import draw
 im = draw.text('example', size=50)
-text_im.show()
+im.show()
 ```
 
 ![](img/text_im.png)
