@@ -1,5 +1,9 @@
 # randphase
-Python functions for generating phase-randomised images of text. Fourier transform is used to extract amplitude. Inverse Fourier transform is used to generate an image with the same amplitude spectrum but with phase generated from uniformly distributed noise or a permutation of the original image's phase (preserving the overall distribution of phase values).
+Python functions for generating phase-randomised images, with a focus on making visual controls for text.
+
+* [`draw.text()`](#drawing-text) creates images of text, cropped to the extremities of either the text or font.
+
+* [`phase.randomise()`](#randomising-phase) randomises the phase of any image (including images of text). Fourier transform is used to extract amplitude. Inverse Fourier transform is used to generate an image with the same amplitude spectrum but with phase generated from uniformly distributed noise or a permutation of the original image's phase (which preserves the overall distribution of phase values).
 
 ## Drawing Text
 
@@ -39,6 +43,8 @@ text_spec.show()
 ![](img/text_spec.png)
 
 ## Randomising Phase
+
+Fourier transform is used to extract amplitude. Inverse Fourier transform is used to generate an image with the same amplitude spectrum but with phase generated from uniformly distributed noise or a permutation of the original image's phase (preserving the overall distribution of phase values).
 
 To randomise the phase of an image with normally distributed noise, use `phase.randomise()`. This can be drawn from a uniform distribution (between <img src="https://render.githubusercontent.com/render/math?math=-\pi"> and <img src="https://render.githubusercontent.com/render/math?math=\pi">), or from a random permutation of the original phase values. Permuting the phase values can produce some very nice text-like noise patterns!
 
