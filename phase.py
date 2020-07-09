@@ -25,7 +25,7 @@ def randomise (img, noise='uniform', noise_prop=1, contrast_adj=1):
     amp = np.abs(img_fft)
     # get original image's phase
     ph = np.angle(img_fft)
-    # get randomised phas
+    # get randomised phase values
     if noise == 'uniform':
         ph_noise = np.random.uniform(-np.pi, np.pi, img_fft.shape)
     elif noise == 'permute':
@@ -33,11 +33,11 @@ def randomise (img, noise='uniform', noise_prop=1, contrast_adj=1):
     elif noise == 'normal':
         ph_noise = np.random.normal(0, 1, img_fft.shape)
     
-    # get new phase
+    # get phase values with the desired proportion of noise
     ph_new = ph * (1-noise_prop) + ph_noise * noise_prop
     
     # inverse fourier transform using the new phases
-    # (absolute result is rounded to nearest integer)
+    # (rounded to nearest integer to account for rounding errors)
     img_ph_rand = np.round(np.abs( np.fft.ifftn(amp * np.exp(1j * ph_new)) ))
     
     # convert to PIL image
