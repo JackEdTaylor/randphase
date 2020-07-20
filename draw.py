@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from string import ascii_letters
 
-def text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,127), border=(0,0,0,0), crop_x='text', crop_y='text', align_x='centre'):
+def draw_text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,127), border=(0,0,0,0), crop_x='text', crop_y='text', crop_chars=ascii_letters, fontcrop_n=None, align_x='centre', greyscale=False):
     """Return a PIL image of the specified text, cropped to its boundaries.
     
      Keyword arguments:
@@ -18,10 +18,13 @@ def text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,12
     crop_y -- should be one of the following, specifiying whether the output's height be cropped to the maximum boundaries of the current text or the font:
         'text': the height limits of the rendered text
         'font': the height limits of the font's ascii characters given the text's length
+    crop_chars -- a list of characters that should be used to find the font extremities when cropping. Default is string.ascii_letters
+    fontcrop_n -- if crop_x or crop_y are 'font', how many characters should the crop assume are available to the font? If None (default) will use len(text).
     align_x -- how to horizontally align the text (if any white space):
         'left': align to the left
         'centre': align to the centre
         'right': align to the right
+    greyscale -- should the resulting image be converted to greyscale?
     """
     
     # get font info
@@ -35,12 +38,16 @@ def text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,12
     
     # find which pixels could be filled by text
     if crop_x=='font' or crop_y=='font':
-        letter_fontsizes = [pil_font.getsize(letter*len(text)) for letter in ascii_letters]
+        if fontcrop_n is None:
+            crop_nchar = len(text)
+        else:
+            crop_nchar = fontcrop_n
+        letter_fontsizes = [pil_font.getsize(letter*crop_nchar) for letter in crop_chars]
         canvas_max_size = (max([tup[0] for tup in letter_fontsizes]), max([tup[1] for tup in letter_fontsizes]))
         im_lims = Image.new('RGB', canvas_max_size, bg)
         im_lims_draw = ImageDraw.Draw(im_lims)
-        for letter in ascii_letters:
-            im_lims_draw.text((0,0), letter*len(text), font=pil_font, fill=colour)
+        for letter in crop_chars:
+            im_lims_draw.text((0,0), letter*crop_nchar, font=pil_font, fill=colour)
         im_lims_arr = np.array(im_lims)
         text_lims_px = np.where(np.sum(im_lims_arr==bg, 2)!=im_lims_arr.shape[2])
         
@@ -91,5 +98,8 @@ def text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,12
     # draw the text in the necessary position
     im_out_draw.text((-min_x_text + border[0] + align_adjust, -min_y + border[2]), text, font=pil_font, fill=colour)
     
-    return(im_out)
+    # convert to greyscale if necessary
+    if greyscale:
+        im_out=im_out.convert('L')
     
+    return(im_out)
