@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 from string import ascii_letters
 
-def draw_text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,127), border=(0,0,0,0), crop_x='text', crop_y='text', crop_chars=ascii_letters, fontcrop_n=None, align_x='centre', greyscale=False):
+def text (text,  font='arial.ttf', size=32, colour=(255,255,255), bg=(127,127,127), border=(0,0,0,0), crop_x='text', crop_y='text', crop_chars=ascii_letters, fontcrop_n=None, align_x='centre', greyscale=False):
     """Return a PIL image of the specified text, cropped to its boundaries.
     
      Keyword arguments:
