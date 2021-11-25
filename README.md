@@ -89,7 +89,7 @@ u_010.show()
 u_025.show()
 u_050.show()
 u_075.show()
-u_0100.show()
+u_100.show()
 ```
 
 ![](img/im.png)
