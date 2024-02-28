@@ -46,7 +46,7 @@ text_spec.show()
 
 Fourier transform is used to extract amplitude. Inverse Fourier transform is used to generate an image with the same amplitude spectrum but with phase generated from uniformly distributed noise or a permutation of the original image's phase (preserving the overall distribution of phase values).
 
-To randomise the phase of an image with normally distributed noise, use `phase.randomise()`. This can be drawn from a uniform distribution (between <img src="https://render.githubusercontent.com/render/math?math=-\pi"> and <img src="https://render.githubusercontent.com/render/math?math=\pi">), or from a random permutation of the original phase values. Permuting the phase values can produce some very nice text-like noise patterns!
+To randomise the phase of an image with normally distributed noise, use `phase.randomise()`. This can be drawn from a uniform distribution (between $-\pi$ and $\pi$), or from a random permutation of the original phase values. Permuting the phase values can produce some very nice text-like noise patterns!
 
 ```python
 import phase
